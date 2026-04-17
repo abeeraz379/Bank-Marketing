@@ -1,4 +1,4 @@
-# Bank-Marketing
+# Bank-Marketing-prediction
 - By : **ABeer Al-Zebda | Machine Learning Engineer**
 <img width="1024" height="536" alt="Digital-marketing-for-banking-industry-1024x536" src="https://github.com/user-attachments/assets/b76ac95d-bf09-44ca-ab38-9857354401e3" />
 

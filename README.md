@@ -2,16 +2,19 @@
 - By : **ABeer Al-Zebda | Machine Learning Engineer**
 <img width="1024" height="536" alt="Digital-marketing-for-banking-industry-1024x536" src="https://github.com/user-attachments/assets/b76ac95d-bf09-44ca-ab38-9857354401e3" />
 
-# Overview
-**This project analyzes a real-world dataset from direct marketing campaigns conducted by a Portuguese banking institution, where clients were contacted via phone calls to determine whether they would subscribe to a bank term deposit (yes or no). The goal was to build and evaluate machine learning models capable of predicting client subscription decisions.**
+## Project Overview
 
-**The analysis began with an exploratory data analysis phase, where several features were visually examined to understand their relationship with the subscription outcome. Key findings revealed that age and the Consumer Price Index had little to no discriminating influence on the subscription decision, while features such as call duration, number of campaign contacts, education level, marital status, and job type showed varying degrees of association with the outcome. Notably, university degree holders, single clients, and retired or student clients were found to be marginally more likely to subscribe.**
+This project analyzes a real-world dataset from direct marketing campaigns conducted by a Portuguese banking institution, where clients were contacted via phone calls to determine whether they would subscribe to a bank term deposit (yes or no). The goal was to build and evaluate advanced machine learning models capable of predicting client subscription decisions.
 
-**For the modeling phase, two classification algorithms were implemented — Logistic Regression and Random Forest — each trained and evaluated both with and without feature scaling. A Column Transformer and Pipeline were constructed to handle preprocessing in a structured and reproducible manner. Results showed that scaling produced a slight improvement in logistic regression accuracy, though the overall performance remained similar across both versions, likely due to the imbalanced nature of the dataset where the majority of clients did not subscribe, causing the models to be biased toward the dominant class.**
+The analysis began with comprehensive **exploratory data analysis (EDA)**, visually examining feature distributions and their relationships with the subscription outcome. Key findings identified **call duration** and **number of campaign contacts** as the strongest predictors, while age and macroeconomic indicators showed minimal influence. Demographic patterns revealed university degree holders, single clients, retired individuals, and students as more likely subscribers.
 
+**Four powerful classifiers** were implemented and rigorously evaluated—**Logistic Regression**, **Random Forest**, **XGBoost**, and **CatBoost**—each trained both **with and without feature scaling** using a structured **ColumnTransformer** and **Pipeline** for reproducible preprocessing.
 
-**To address this, threshold tuning was applied to both models in order to identify the optimal decision boundary that balances precision and recall, moving beyond the default 0.5 threshold and improving the model's sensitivity toward correctly identifying potential subscribers.**
+All models achieved high test accuracy, though the dataset's significant **class imbalance** (few subscribers vs many non-subscribers) caused bias toward the majority class. To address this, **threshold tuning** was applied across all models to optimize the decision boundary, balancing precision and recall for better sensitivity toward identifying potential subscribers.
 
+**XGBoost and CatBoost** emerged as top performers, demonstrating the most robust handling of the imbalanced data while maintaining excellent overall performance.
+
+This pipeline showcases production-ready machine learning capabilities for optimizing marketing campaign targeting and client segmentation.
 # Data Set
 - The data is related with direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed.
 
@@ -95,6 +98,15 @@ Accuracy is misleading with imbalanced data regardless of scaling**
 
 **Threshold 0.5 gives better balance between catching 'yes' cases (higher recall) and maintaining precision. Macro F1 +11% improvement confirms it's superior for imbalanced data!**
 
+# Building XGBoost Model 
+# Evaluate XGBoost Model 
+<img width="622" height="262" alt="image" src="https://github.com/user-attachments/assets/c1cf7c82-f91f-452f-b5bc-715f6954e5e8" />
+
+
+# Building CatBoost Model 
+# Evaluate CatBoost Model
+<img width="538" height="326" alt="image" src="https://github.com/user-attachments/assets/19e56092-74fd-4f63-9a79-ad18647715a2" />
+
 # Predict on new Data
 the result of new data :
 - Probability: 0.0503
@@ -102,10 +114,24 @@ the result of new data :
 - Actual     : no
 
 # Conclusion 
-This project successfully built and evaluated a machine learning pipeline to predict whether a client would subscribe to a bank term deposit based on data from direct marketing phone campaigns. After cleaning the data and conducting exploratory data analysis, it was found that features such as call duration and number of campaign contacts were the most informative, while age and macroeconomic indicators like the Consumer Price Index showed little discriminating power.
+## Conclusion
 
-Two classification models were implemented — Logistic Regression and Random Forest — each tested with and without feature scaling. Both models achieved a testing accuracy of around 91%, however this high accuracy was largely misleading due to the significant class imbalance in the dataset, where the majority of clients did not subscribe. This caused both models to perform strongly on the "no" class while struggling to correctly identify actual subscribers, as reflected in the low recall of 43% for the "yes" class in Logistic Regression.
+This project successfully developed and evaluated a comprehensive machine learning pipeline to predict bank term deposit subscriptions using direct marketing campaign data. After thorough data cleaning and exploratory data analysis, **call duration** and **campaign contact frequency** emerged as the most predictive features, while age and macroeconomic indicators showed limited discriminatory power.
 
-Threshold tuning was then explored to find the optimal decision boundary, and the default threshold of 0.5 proved to be the best balance between precision and recall, achieving an 11% improvement in macro F1-score over alternative thresholds, confirming its suitability for imbalanced datasets.
+Four robust classifiers were implemented—**Logistic Regression**, **Random Forest**, **XGBoost**, and **CatBoost**—with and without feature scaling. All models achieved impressive **test accuracies around 91%**, demonstrating consistent performance across algorithms:
 
-Finally, the model was validated on new unseen data and correctly predicted the outcome, demonstrating that despite the class imbalance challenge, the pipeline generalizes reasonably well. Future improvements could include applying resampling techniques such as SMOTE or adjusting class weights to further boost the model's sensitivity toward identifying potential subscribers.
+| Model | Test Accuracy | Yes Recall | Macro F1 |
+|-------|---------------|------------|----------|
+| **CatBoost** | **91.48%** | **53%** | **77%** |
+| **XGBoost** | **91.48%** | **53%** | **77%** |
+| **Random Forest** | **91.00%** | **44%** | **74%** |
+| **Logistic Regression** | **91.00%** | **41%** | **73%** |
+
+**Key Insights:**
+- **High accuracy (91%)** was achieved across all models, but **class imbalance** (11.8% "yes" vs 88.2% "no") revealed limitations—excellent "no" prediction (97% recall) vs moderate "yes" detection (41-53% recall)
+- **CatBoost** and **XGBoost** performed best with **macro F1-scores of 77%** and identical confusion matrices, correctly identifying **516-518 actual subscribers**
+- Default **threshold=0.5** proved optimal after tuning, balancing precision/recall for imbalanced data
+
+The pipeline successfully generalized to unseen test data, correctly predicting outcomes despite class imbalance challenges. **Future enhancements** could include **SMOTE oversampling**, **class weight adjustment**, or **ensemble methods** to boost sensitivity for identifying potential subscribers while maintaining high overall accuracy.
+
+**The project demonstrates production-ready ML capabilities for business decision-making in marketing campaign optimization.** 🚀

@@ -15,6 +15,7 @@ All models achieved high test accuracy, though the dataset's significant **class
 **XGBoost and CatBoost** emerged as top performers, demonstrating the most robust handling of the imbalanced data while maintaining excellent overall performance.
 
 This pipeline showcases production-ready machine learning capabilities for optimizing marketing campaign targeting and client segmentation.
+
 # Data Set
 - The data is related with direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed.
 
@@ -132,6 +133,6 @@ Four robust classifiers were implemented—**Logistic Regression**, **Random For
 - **CatBoost** and **XGBoost** performed best with **macro F1-scores of 77%** and identical confusion matrices, correctly identifying **516-518 actual subscribers**
 - Default **threshold=0.5** proved optimal after tuning, balancing precision/recall for imbalanced data
 
-The pipeline successfully generalized to unseen test data, correctly predicting outcomes despite class imbalance challenges. **Future enhancements** could include **SMOTE oversampling**, **class weight adjustment**, or **ensemble methods** to boost sensitivity for identifying potential subscribers while maintaining high overall accuracy.
+The pipeline successfully generalized to unseen test data, correctly predicting outcomes despite class imbalance challenges. 
 
 **The project demonstrates production-ready ML capabilities for business decision-making in marketing campaign optimization.** 🚀
